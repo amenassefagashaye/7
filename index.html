@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMEN-GOGS</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        h1, h2 {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        h1 {
+            color: black;
+            font-size: 2em;
+        }
+        h2 {
+            color: #555;
+            font-size: 1.5em;
+        }
+        .button {
+            display: inline-block;
+            background-color: #e63946; /* Red button */
+            color: white;
+            padding: 10px 30px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+            animation: pulse 1.5s infinite;
+            transition: transform 0.3s ease;
+        }
+        .button:hover {
+            transform: scale(1.05);
+        }
+        .button-tg {
+            background-color: #0088cc; /* Telegram blue */
+        }
+        .container {
+            border: 3px solid green;
+            padding: 15px;
+            background-color: white;
+            position: relative;
+            display: inline-block;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+        .container::before, .container::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+        }
+        .container::before {
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 3px solid yellow;
+        }
+        .container::after {
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 3px solid red;
+        }
+        img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            margin-top: 10px;
+        }
+        .arrow {
+            font-size: 1.5em;
+            animation: moveArrow 1.5s infinite;
+            margin: 10px 0; /* Reduced space between buttons */
+        }
+        @keyframes moveArrow {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0); }
+        }
+        @media (max-width: 600px) {
+            .button {
+                font-size: 1em;
+                padding: 8px 20px;
+            }
+        }
+    </style>
+    <script>
+        let isSubscribed = false;
+
+        function activateTelegramButton() {
+            isSubscribed = true;
+        }
+
+        function checkSubscription(event) {
+            if (!isSubscribed) {
+                event.preventDefault();
+                alert("Please click 'Go here first' to subscribe to YouTube before accessing the Telegram channel!");
+            }
+        }
+
+        function notifyToClickYouTube(event) {
+            if (!isSubscribed) {
+                event.preventDefault();
+                alert("First, click 'Go here first' to subscribe to YouTube!");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>AMEN-GOGS</h1>
+        <h2>The right choice, the right place</h2>
+
+        <!-- YouTube Subscribe Button -->
+        <a href="https://www.youtube.com/channel/UCLBivSEh30F44ptAAgEVRUA?sub_confirmation=1" target="_blank" class="button" onclick="activateTelegramButton();">Go here first</a>
+
+        <div class="arrow">⬇</div>
+
+        <!-- Telegram Join Button -->
+        <a href="https://t.me/GOGSmore" target="_blank" class="button button-tg" onclick="checkSubscription(event);" onmouseover="notifyToClickYouTube(event);">Get Bonus</a>
+
+        <!-- Doctor Image -->
+        <img src="https://cdn.pixabay.com/photo/2024/03/29/03/30/ai-generated-8662131_960_720.png" alt="Romantic Female Doctor">
+    </div>
+
+</body>
+</html>
